@@ -25,7 +25,7 @@ class CurlCheck implements CheckInterface
         try {
             curl_setopt($ch, CURLOPT_URL, $this->url);
             curl_setopt($ch, CURLOPT_HEADER, false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
             curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -42,12 +42,11 @@ class CurlCheck implements CheckInterface
                 } else {
                     $status = CheckStatusInterface::STATUS_INCIDENT;
                 }
-            }
-
-            $httpCode = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-            if ($httpCode !== 200) {
-                $status = CheckStatusInterface::STATUS_INCIDENT;
+            } else {
+                $httpCode = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                if ($httpCode !== 200) {
+                    $status = CheckStatusInterface::STATUS_INCIDENT;
+                }
             }
         } catch (\Throwable $th) {
             $status = CheckStatusInterface::STATUS_INCIDENT;

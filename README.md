@@ -14,7 +14,7 @@ Register service in your app:
     Alahaxe\HealthCheckBundle\Checks\Curl\CurlCheck:
         # optional arguments
         arguments:
-            $url: https://httpbin.org/get
+            $url: "https://httpbin.org/get"
             $name: "curlHttpBin"
             # optionals arguments
             $connectTimeout: 2
