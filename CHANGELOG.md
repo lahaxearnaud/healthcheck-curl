@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/lahaxearnaud/healthcheck-curl/compare/v1.0.0...v1.0.1) (2022-01-02)
+
+
+### Bug Fixes
+
+* **checker:** Fix http error management ([4933d2a](https://github.com/lahaxearnaud/healthcheck-curl/commit/4933d2abd44c71f25627029fc3b83b949fc6503f))
+
 # 1.0.0 (2022-01-02)
 
 
