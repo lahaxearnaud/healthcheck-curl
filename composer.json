@@ -1,0 +1,22 @@
+{
+    "name": "alahaxe/healthcheck-curl",
+    "description": "System checks for alahaxe/healthcheck-bundle",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Alahaxe\\HealthCheckBundle\\Checks\\Curl\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "LAHAXE Arnaud",
+            "email": "lahaxe.arnaud@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.1",
+        "alahaxe/healthcheck-contracts": "^1.0"
+    }
+}
