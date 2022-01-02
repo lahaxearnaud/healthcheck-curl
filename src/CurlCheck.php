@@ -46,7 +46,7 @@ class CurlCheck implements CheckInterface
 
             $httpCode = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-            if($httpCode !== 200){
+            if ($httpCode !== 200) {
                 $status = CheckStatusInterface::STATUS_INCIDENT;
             }
         } catch (\Throwable $th) {
