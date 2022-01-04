@@ -16,7 +16,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^8.1",
+        "php": "^8.0",
         "alahaxe/healthcheck-contracts": "^1.0"
     },
     "require-dev": {
