@@ -45,7 +45,6 @@ class CurlCheck implements CheckInterface
                     $status = $failStatus;
                 }
             } else {
-
                 $httpCode = intval(curl_getinfo($ch, CURLINFO_HTTP_CODE));
                 if ($httpCode !== 200) {
                     $status = $failStatus;
