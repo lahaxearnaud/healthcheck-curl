@@ -36,20 +36,21 @@ class CurlCheck implements CheckInterface
             $response = curl_exec($ch);
             $status = CheckStatusInterface::STATUS_OK;
 
+            $failStatus = $this->warningOnFail ? CheckStatusInterface::STATUS_WARNING : CheckStatusInterface::STATUS_INCIDENT;
             if ($error = curl_errno($ch)) {
                 if (CURLE_OPERATION_TIMEDOUT === $error && $this->warningOnTimeout) {
                     $status = CheckStatusInterface::STATUS_WARNING;
                 } else {
-                    $status = CheckStatusInterface::STATUS_INCIDENT;
+                    $status = $failStatus;
                 }
             } else {
                 $httpCode = intval(curl_getinfo($ch, CURLINFO_HTTP_CODE));
                 if ($httpCode !== 200) {
-                    $status = CheckStatusInterface::STATUS_INCIDENT;
+                    $status = $failStatus;
                 }
             }
         } catch (\Throwable $th) {
-            $status = CheckStatusInterface::STATUS_INCIDENT;
+            $status = $failStatus;
         } finally {
             curl_close($ch);
         }
