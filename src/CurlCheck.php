@@ -22,6 +22,7 @@ class CurlCheck implements CheckInterface
     public function check(): CheckStatusInterface
     {
         $ch = curl_init();
+        $failStatus = $this->warningOnFail ? CheckStatusInterface::STATUS_WARNING : CheckStatusInterface::STATUS_INCIDENT;
         try {
             curl_setopt($ch, CURLOPT_URL, $this->url);
             curl_setopt($ch, CURLOPT_HEADER, false);
@@ -36,7 +37,6 @@ class CurlCheck implements CheckInterface
             $response = curl_exec($ch);
             $status = CheckStatusInterface::STATUS_OK;
 
-            $failStatus = $this->warningOnFail ? CheckStatusInterface::STATUS_WARNING : CheckStatusInterface::STATUS_INCIDENT;
             if ($error = curl_errno($ch)) {
                 if (CURLE_OPERATION_TIMEDOUT === $error && $this->warningOnTimeout) {
                     $status = CheckStatusInterface::STATUS_WARNING;
