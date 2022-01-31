@@ -88,7 +88,7 @@ class CurlCheckTest extends TestCase
             1,
             1,
             true,
-            true,
+            false,
             true
         );
         $result = $check->check();

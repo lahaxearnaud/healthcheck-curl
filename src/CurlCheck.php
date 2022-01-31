@@ -22,6 +22,7 @@ class CurlCheck implements CheckInterface
     public function check(): CheckStatusInterface
     {
         $ch = curl_init();
+
         $failStatus = $this->warningOnFail ? CheckStatusInterface::STATUS_WARNING : CheckStatusInterface::STATUS_INCIDENT;
         try {
             curl_setopt($ch, CURLOPT_URL, $this->url);
@@ -44,6 +45,7 @@ class CurlCheck implements CheckInterface
                     $status = $failStatus;
                 }
             } else {
+
                 $httpCode = intval(curl_getinfo($ch, CURLINFO_HTTP_CODE));
                 if ($httpCode !== 200) {
                     $status = $failStatus;
