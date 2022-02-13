@@ -26,13 +26,13 @@ class CurlCheck implements CheckInterface
         $failStatus = $this->warningOnFail ? CheckStatusInterface::STATUS_WARNING : CheckStatusInterface::STATUS_INCIDENT;
         try {
             curl_setopt($ch, CURLOPT_URL, $this->url);
+            curl_setopt($ch, CURLOPT_HTTPGET, true);
             curl_setopt($ch, CURLOPT_HEADER, false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
             curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
             curl_setopt($ch, CURLOPT_MAXREDIRS, 2);
-            curl_setopt($ch, CURLOPT_NOBODY, true);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $this->trustCertificate ? 2 : 0);
 
             $response = curl_exec($ch);
