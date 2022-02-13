@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/lahaxearnaud/healthcheck-curl/compare/v1.0.3...v1.0.4) (2022-02-13)
+
+
+### Bug Fixes
+
+* send GET instead of HEAD ([e9bc58c](https://github.com/lahaxearnaud/healthcheck-curl/commit/e9bc58cd884ef4fd90c30a02beccc46e5f502d01))
+
 ## [1.0.3](https://github.com/lahaxearnaud/healthcheck-curl/compare/v1.0.2...v1.0.3) (2022-01-31)
 
 
